@@ -1,0 +1,18 @@
+# conda env create -f environment.yml
+# conda activate rivpiv
+name: rivpiv
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.10
+  - numpy
+  - scipy
+  - matplotlib
+  - imageio
+  - imageio-ffmpeg
+  - jupyterlab
+  - ipympl
+  - pytest
+  - pip
+  - pip:
+      - -e .

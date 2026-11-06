@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.ipynb_checkpoints/
+.pytest_cache/
+*.npy
+*.npz
+# students' own calibration files are kept; scratch outputs are not
+notebooks/*.png

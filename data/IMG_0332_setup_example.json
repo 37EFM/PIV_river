@@ -1,0 +1,36 @@
+{
+  "movie": "IMG_0332.mov",
+  "scale": 1.0,
+  "width": 1080,
+  "height": 1920,
+  "focal_length_px": 1386.6666666666667,
+  "segments": [
+    [240.0, 230.0, 830.0, 230.0, 8.88],
+    [230.0, 250.0, 30.0, 560.0, 10.58],
+    [1000.0, 1300.0, 1080.0, 1700.0, 1.66]
+  ],
+  "static_regions": [
+    [0, 0, 240, 430],
+    [880, 1320, 1080, 1900],
+    [0, 0, 600, 100]
+  ],
+  "water_polygon": [
+    [250, 215],
+    [620, 110],
+    [820, 200],
+    [840, 280],
+    [1079, 300],
+    [1079, 1230],
+    [1000, 1300],
+    [950, 1500],
+    [900, 1800],
+    [850, 1919],
+    [0, 1919],
+    [0, 620],
+    [40, 520],
+    [120, 400],
+    [230, 290]
+  ],
+  "camera": null,
+  "notes": "EXAMPLE FILE. The segment lengths are placeholders computed from an assumed camera (5 m above the water, pitched 40 degrees down), not measurements. Replace them by measured lengths in the notebook and save your own IMG_0332_setup.json."
+}

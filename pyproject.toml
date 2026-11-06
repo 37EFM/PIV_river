@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rivpiv"
+version = "0.1.0"
+description = "Surface velocimetry (LSPIV) of a river from a phone video, for the course 37EFM at TU/e"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Matias Duran Matute"}]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "matplotlib>=3.7",
+    "imageio>=2.30",
+    "imageio-ffmpeg>=0.4.9",
+]
+
+[project.optional-dependencies]
+notebook = ["jupyterlab", "ipympl"]
+test = ["pytest"]
+
+[tool.setuptools]
+packages = ["rivpiv"]
