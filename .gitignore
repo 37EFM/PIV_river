@@ -9,3 +9,9 @@ dist/
 *.npz
 # students' own calibration files are kept; scratch outputs are not
 notebooks/*.png
+# movies are not kept in the repository: put your own in data/
+data/*.mov
+data/*.MOV
+data/*.mp4
+data/*.MP4
+data/*.m4v

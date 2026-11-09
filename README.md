@@ -1,8 +1,8 @@
 # PIV_river — surface velocity of a river from a phone video
 
 Course material for **37EFM Environmental Fluid Mechanics** (Eindhoven
-University of Technology). A short video of a river, filmed from a
-bridge with a phone, is turned into a map of the surface velocity in
+University of Technology). A short video of a river, filmed by you from
+a bridge with a phone, is turned into a map of the surface velocity in
 metres per second. The method is *large-scale particle image
 velocimetry* (LSPIV): foam, leaves and ripples are the particles, the
 phone is the camera.
@@ -13,8 +13,7 @@ The repository contains
 |---|---|
 | `notebooks/river_surface_PIV.ipynb` | The walkthrough, from movie to velocity field, with questions at the end. Start here. |
 | `rivpiv/` | The Python package the notebook uses: five short, commented modules. |
-| `data/IMG_0332.mov` | 3.7 s of the Dommel in Eindhoven, 6 November 2026, 1080 × 1920 at 30 fps. |
-| `data/IMG_0332_setup_example.json` | An example calibration file. **Its lengths are placeholders**, not measurements; see the notebook. |
+| `data/` | Where your movie goes. The notebook saves your calibration next to it as `<movie>_setup.json`. No movie is shipped. |
 | `tests/` | Checks of the geometry, the correlation and the stabilization on synthetic data (`pytest`). |
 
 ## Installation
@@ -29,6 +28,9 @@ conda activate rivpiv
 jupyter lab notebooks/river_surface_PIV.ipynb
 ```
 
+Copy your movie into `data/` before running the notebook; it takes the
+first `.mov` or `.mp4` file it finds there.
+
 Without conda, `pip install -e ".[notebook]"` in the repository does the
 same. The interactive drawing tools need the `ipympl` package, which
 both routes install; in the notebook they are switched on with
@@ -36,8 +38,9 @@ both routes install; in the notebook they are switched on with
 
 ## What the notebook does
 
-1. **Read** the movie. The phone's metadata gives the lens, its focal
-   length and the GPS position.
+1. **Read** the movie. An iPhone writes the lens, its focal length and
+   the GPS position into the metadata; for other phones you type the
+   35 mm-equivalent focal length of the camera, from its specifications.
 2. **Stabilize.** A hand-held phone drifts by tens of pixels in a few
    seconds and rolls slightly. Rectangles drawn on the banks are tracked
    from frame to frame, a rigid motion is fitted, and every frame is
@@ -56,6 +59,23 @@ both routes install; in the notebook they are switched on with
    is extracted, and a discharge is estimated from an assumed depth
    profile. Instantaneous fields give a time series at a point.
 
+## Filming your own river
+
+- Brace the phone on a railing. The stabilization corrects drift and
+  roll, not a walk.
+- Keep both banks in the frame, with some vegetation or ground on each:
+  these are the static regions the stabilization tracks.
+- Ten to twenty seconds at 30 fps is plenty. Lock the exposure if the
+  phone allows it. Use the main camera, not the wide one, and note which
+  one you used.
+- Foam, leaves and ripples are the tracers. Still, glassy water with
+  reflections of the sky gives nothing to track; wind ripples help.
+- Measure two lengths on the water that you can see in the frame (next
+  section).
+
+Then copy the movie into `data/`, run the notebook, draw the regions
+and segments when asked, and keep the setup file it saves.
+
 ## What to measure in the field
 
 The calibration needs lengths on the water surface that are visible in
@@ -72,21 +92,6 @@ the ends are.
 
 The discharge estimate also needs a depth profile across the section
 you choose, which the notebook does not provide.
-
-## Filming your own river
-
-- Brace the phone on a railing. The stabilization corrects drift and
-  roll, not a walk.
-- Keep both banks in the frame, with some vegetation or ground on each:
-  these are the static regions the stabilization tracks.
-- Ten to twenty seconds at 30 fps is plenty. Lock the exposure if the
-  phone allows it.
-- Foam, leaves and ripples are the tracers. Still, glassy water with
-  reflections of the sky gives nothing to track; wind ripples help.
-- Measure two lengths on the water that you can see in the frame.
-
-Then copy the movie into `data/`, change `MOVIE` in the notebook, draw
-new regions and segments, and save the setup under a new name.
 
 ## Assumptions and limits
 
@@ -134,5 +139,4 @@ be read and changed.
 
 ## Licence
 
-MIT, see `LICENSE`. The movie is by Matias Duran Matute and may be used
-under the same terms.
+MIT, see `LICENSE`.
